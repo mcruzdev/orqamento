@@ -42,7 +42,7 @@ public class Outflow {
         this.type = type;
         this.amount = Objects.requireNonNull(amount, "The amount must not be null");
         this.name = Objects.requireNonNull(name, "The name must not be null");
-        this.date = LocalDate.now(ZoneId.of("America/Sao_Paulo"));
+        this.date = LocalDate.now(ZoneId.of("UTC"));
         this.createdAt = Instant.now();
         this.tags = Objects.requireNonNullElse(tags, List.of());
     }

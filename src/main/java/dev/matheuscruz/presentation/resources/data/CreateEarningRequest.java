@@ -1,7 +1,7 @@
 package dev.matheuscruz.presentation.resources.data;
 
 import java.math.BigDecimal;
-import java.time.YearMonth;
+import java.time.LocalDate;
 
-public record CreateEarningRequest(YearMonth yearMonth, BigDecimal amount) {
+public record CreateEarningRequest(LocalDate date, BigDecimal amount) {
 }
