@@ -1,10 +1,10 @@
-package dev.matheuscruz.infra.resources;
+package dev.matheuscruz.presentation.resources;
 
 import dev.matheuscruz.domain.Goal;
 import dev.matheuscruz.domain.GoalItem;
 import dev.matheuscruz.infra.persistence.GoalRepository;
-import dev.matheuscruz.infra.resources.data.AddGoalsRequest;
-import dev.matheuscruz.infra.resources.data.ErrorResponse;
+import dev.matheuscruz.presentation.resources.data.AddGoalsRequest;
+import dev.matheuscruz.presentation.resources.data.ErrorResponse;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;

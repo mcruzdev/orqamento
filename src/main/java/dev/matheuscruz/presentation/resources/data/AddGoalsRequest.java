@@ -1,4 +1,4 @@
-package dev.matheuscruz.infra.resources.data;
+package dev.matheuscruz.presentation.resources.data;
 
 import dev.matheuscruz.domain.OutflowType;
 

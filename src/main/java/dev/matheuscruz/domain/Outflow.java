@@ -1,6 +1,7 @@
 package dev.matheuscruz.domain;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -11,6 +12,10 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -26,17 +31,20 @@ public class Outflow {
     private String name;
     private LocalDate date;
     private Instant createdAt;
+    @ElementCollection
+    private List<String> tags = new ArrayList<>();
 
     protected Outflow() {
     }
 
-    public Outflow(OutflowType type, BigDecimal amount, String name) {
+    public Outflow(OutflowType type, BigDecimal amount, String name, List<String> tags) {
         this.id = UUID.randomUUID().toString();
         this.type = type;
-        this.amount = amount;
-        this.name = name;
+        this.amount = Objects.requireNonNull(amount, "The amount must not be null");
+        this.name = Objects.requireNonNull(name, "The name must not be null");
         this.date = LocalDate.now(ZoneId.of("America/Sao_Paulo"));
         this.createdAt = Instant.now();
+        this.tags = Objects.requireNonNullElse(tags, List.of());
     }
 
     public String getId() {
@@ -61,5 +69,9 @@ public class Outflow {
 
     public Instant getCreatedAt() {
         return createdAt;
+    }
+
+    public List<String> getTags() {
+        return Collections.unmodifiableList(tags);
     }
 }

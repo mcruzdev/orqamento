@@ -1,4 +1,4 @@
-package dev.matheuscruz.infra.resources.data;
+package dev.matheuscruz.presentation.resources.data;
 
 public record ErrorResponse(String message) {
 

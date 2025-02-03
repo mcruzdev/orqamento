@@ -1,10 +1,10 @@
-package dev.matheuscruz.infra.resources;
+package dev.matheuscruz.presentation.resources;
 
 import dev.matheuscruz.domain.Outflow;
 import dev.matheuscruz.infra.persistence.OutflowRepository;
-import dev.matheuscruz.infra.resources.data.CreateOutflowRequest;
-import dev.matheuscruz.infra.resources.data.ErrorResponse;
-import dev.matheuscruz.infra.resources.data.QueryOutflowByYearMonth;
+import dev.matheuscruz.presentation.resources.data.CreateOutflowRequest;
+import dev.matheuscruz.presentation.resources.data.ErrorResponse;
+import dev.matheuscruz.presentation.resources.data.QueryOutflowByYearMonth;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.quarkus.panache.common.Parameters;
 import jakarta.inject.Inject;
@@ -16,8 +16,11 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import java.math.BigDecimal;
 import java.time.DateTimeException;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @Path("/outflows")
 public class OutflowResource {
@@ -29,7 +32,7 @@ public class OutflowResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Response create(CreateOutflowRequest req) {
-        Outflow outflow = new Outflow(req.type(), req.amount(), req.name());
+        Outflow outflow = new Outflow(req.type(), req.amount(), req.name(), req.tags());
 
         outflowRepository.persist(outflow);
 
@@ -48,8 +51,13 @@ public class OutflowResource {
                             .and("end", query.lastDay())
             ).list();
 
+            Optional<BigDecimal> total = outflows.stream().map(Outflow::getAmount).reduce(BigDecimal::add);
+
             return Response.status(HttpResponseStatus.OK.code())
-                    .entity(outflows)
+                    .entity(Map.of(
+                          "outflows", outflows,
+                          "totalAmount", total
+                    ))
                     .build();
 
         } catch (DateTimeException e) {

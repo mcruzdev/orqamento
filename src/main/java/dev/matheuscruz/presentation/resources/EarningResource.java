@@ -1,10 +1,10 @@
-package dev.matheuscruz.infra.resources;
+package dev.matheuscruz.presentation.resources;
 
 import dev.matheuscruz.domain.Earning;
 import dev.matheuscruz.infra.persistence.EarningRepository;
-import dev.matheuscruz.infra.resources.data.CreateEarningRequest;
-import dev.matheuscruz.infra.resources.data.ErrorResponse;
-import dev.matheuscruz.infra.resources.data.QueryOutflowByYearMonth;
+import dev.matheuscruz.presentation.resources.data.CreateEarningRequest;
+import dev.matheuscruz.presentation.resources.data.ErrorResponse;
+import dev.matheuscruz.presentation.resources.data.QueryOutflowByYearMonth;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.quarkus.panache.common.Parameters;
 import jakarta.inject.Inject;
