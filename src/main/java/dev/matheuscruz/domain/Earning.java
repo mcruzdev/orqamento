@@ -18,7 +18,6 @@ public class Earning {
    @Id
    private String id;
    private BigDecimal amount;
-   @Column(columnDefinition = "date")
    private LocalDate date;
    @Column(name = "created_at")
    private Instant createdAt;

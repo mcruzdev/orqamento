@@ -22,56 +22,56 @@ import java.util.UUID;
 @Table(name = "outflows")
 public class Outflow {
 
-    @Id
-    private String id;
-    @Column
-    @Enumerated(value = EnumType.STRING)
-    private OutflowType type;
-    private BigDecimal amount;
-    private String name;
-    private LocalDate date;
-    private Instant createdAt;
-    @ElementCollection
-    private List<String> tags = new ArrayList<>();
+   @Id
+   private String id;
+   @Column
+   @Enumerated(value = EnumType.STRING)
+   private OutflowType type;
+   private BigDecimal amount;
+   private String name;
+   private LocalDate date;
+   private Instant createdAt;
+   @ElementCollection
+   private List<String> tags = new ArrayList<>();
 
-    protected Outflow() {
-    }
+   protected Outflow() {
+   }
 
-    public Outflow(OutflowType type, BigDecimal amount, String name, List<String> tags) {
-        this.id = UUID.randomUUID().toString();
-        this.type = type;
-        this.amount = Objects.requireNonNull(amount, "The amount must not be null");
-        this.name = Objects.requireNonNull(name, "The name must not be null");
-        this.date = LocalDate.now(ZoneId.of("UTC"));
-        this.createdAt = Instant.now();
-        this.tags = Objects.requireNonNullElse(tags, List.of());
-    }
+   public Outflow(OutflowType type, BigDecimal amount, String name, List<String> tags) {
+      this.id = UUID.randomUUID().toString();
+      this.type = type;
+      this.amount = Objects.requireNonNull(amount, "The amount must not be null");
+      this.name = Objects.requireNonNull(name, "The name must not be null");
+      this.date = LocalDate.now(ZoneId.of("UTC"));
+      this.createdAt = Instant.now();
+      this.tags = Objects.requireNonNullElse(tags, List.of());
+   }
 
-    public String getId() {
-        return id;
-    }
+   public String getId() {
+      return id;
+   }
 
-    public OutflowType getType() {
-        return type;
-    }
+   public OutflowType getType() {
+      return type;
+   }
 
-    public BigDecimal getAmount() {
-        return amount;
-    }
+   public BigDecimal getAmount() {
+      return amount;
+   }
 
-    public String getName() {
-        return name;
-    }
+   public String getName() {
+      return name;
+   }
 
-    public LocalDate getDate() {
-        return date;
-    }
+   public LocalDate getDate() {
+      return date;
+   }
 
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
+   public Instant getCreatedAt() {
+      return createdAt;
+   }
 
-    public List<String> getTags() {
-        return Collections.unmodifiableList(tags);
-    }
+   public List<String> getTags() {
+      return Collections.unmodifiableList(tags);
+   }
 }
