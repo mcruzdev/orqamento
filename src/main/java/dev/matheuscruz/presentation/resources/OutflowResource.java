@@ -55,7 +55,7 @@ public class OutflowResource {
                .build();
 
       } catch (DateTimeException e) {
-         return Response.status(HttpResponseStatus.BAD_REQUEST.code()).entity(ErrorResponse.of("Invalid year or month"))
+         return Response.status(HttpResponseStatus.BAD_REQUEST.code()).entity(ErrorResponse.of("invalid year or month"))
                .build();
       }
    }

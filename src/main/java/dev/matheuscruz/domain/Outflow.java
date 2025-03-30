@@ -40,8 +40,9 @@ public class Outflow {
    public Outflow(OutflowType type, BigDecimal amount, String name, List<String> tags) {
       this.id = UUID.randomUUID().toString();
       this.type = type;
-      this.amount = Objects.requireNonNull(amount, "The amount must not be null");
-      this.name = Objects.requireNonNull(name, "The name must not be null");
+      this.amount = Objects.requireNonNull(amount, "the 'amount' must not be null");
+      this.name = Objects.requireNonNull(name, "the 'name' must not be null");
+      this.name = Objects.requireNonNull(name, "the 'name' must not be null");
       this.date = LocalDate.now(ZoneId.of("UTC"));
       this.createdAt = Instant.now();
       this.tags = Objects.requireNonNullElse(tags, List.of());

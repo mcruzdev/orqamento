@@ -38,7 +38,7 @@ public class Goal {
         Set<OutflowType> types = this.goals.stream().map(GoalItem::getType).collect(Collectors.toSet());
 
         if (types.contains(goalItem.getType()) || finalSum + goalItem.getPercent() > 100) {
-            throw new IllegalStateException("Invalid goals percent");
+            throw new IllegalStateException("invalid goals percent");
         }
         this.goals.add(goalItem);
 

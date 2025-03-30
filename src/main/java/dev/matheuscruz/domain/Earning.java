@@ -27,8 +27,8 @@ public class Earning {
 
    public Earning(BigDecimal amount, LocalDate date) {
       this.id = UUID.randomUUID().toString();
-      this.amount = Objects.requireNonNull(amount, "The amount must not be null");
-      this.date = Objects.requireNonNull(date, "The date must not be null");
+      this.amount = Objects.requireNonNull(amount, "the 'amount' must not be null");
+      this.date = Objects.requireNonNull(date, "the 'date' must not be null");
       this.createdAt = Instant.now();
    }
 

@@ -35,7 +35,7 @@ public class GoalsResource {
         if (sum.isEmpty() || sum.get() != 100) {
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(ErrorResponse.of(
-                            "Invalid goal percents"
+                            "invalid goal percents"
                     ))
                     .build();
         }
